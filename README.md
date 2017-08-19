@@ -1,6 +1,8 @@
 # generator-easy-gulp-flow [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Zip, FTP and SSH gulp flow to deploy your code.
 
+This is the generator which keeps me lazy, it uses Gulp to compile my sass assets & compress my code then deploy it using FTP + SSH.
+
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-easy-gulp-flow using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
@@ -10,11 +12,21 @@ npm install -g yo
 npm install -g generator-easy-gulp-flow
 ```
 
-Then generate your new project:
+Then generate your new workflow:
 
 ```bash
 yo easy-gulp-flow
 ```
+
+The following tasks are defined:
+ * **build** compiles the js & sass
+ * **deploy** build, zip, ftp then ssh.
+ * **ftp** uploads the zipped project to the remote server
+ * **js** compiles es future to es5
+ * **sass** compiles sass into css
+ * **ssh:unzip** unzips the uploaded file on the remote server
+ * **watch:deploy** executes deploy task on local file change
+ * **zip** compresses project sources
 
 ## Getting To Know Yeoman
 

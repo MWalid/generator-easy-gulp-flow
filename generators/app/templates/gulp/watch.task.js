@@ -1,17 +1,16 @@
 import gulp from 'gulp';
 import runSequence from 'run-sequence';
 
-gulp.task('_watch:deploy:theme', () => {
+gulp.task('_watch:deploy', () => {
     return gulp.watch([
       './themes/**/*',
       './plugins/**/*'
-    ], ['deploy:theme']);
+    ], ['deploy']);
 });
 
-gulp.task('watch:deploy:theme', () => {
+gulp.task('watch:deploy', () => {
     return runSequence(
-        'deploy:theme:light',
-        '_watch:deploy:theme'
+        'deploy',
+        '_watch:deploy'
     );
 });
-gulp.task('watch:deploy', ['watch:deploy:theme']);
