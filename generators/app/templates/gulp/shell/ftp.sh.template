@@ -1,0 +1,24 @@
+#!/bin/sh
+# Important: binary command is so important to propery upload zipped file to the
+# server
+echo 'Uploading to server'
+HOST='${HOST}'
+USER='${USER}'
+PASSWD='${PASSWD}'
+LOCAL_COMPRESSED='${LOCAL_COMPRESSED}'
+REMOTE_COMPRESSED='${REMOTE_COMPRESSED}'
+
+FILE="$LOCAL_COMPRESSED $REMOTE_COMPRESSED"
+
+ftp -n -p $HOST <<END_SCRIPT
+quote USER $USER
+quote PASS $PASSWD
+binary
+
+put $FILE
+quit
+END_SCRIPT
+
+echo 'Finished uploading...'
+
+exit 0
