@@ -4,33 +4,7 @@ import del  from 'del';
 import path from 'path';
 import Config from './config';
 var argv = require('yargs').argv;
-const { exec } = require('child_process');
 
-
-gulp.task('shell:chmod', (done) => {
-
-    let _chmod = (dirs, i = 0) => {
-
-        if (i === dirs.length) {
-            return done();
-        }
-
-        exec(`chmod -R 755 ${dirs[i]}` , (err, stdout, stderr) => {
-            if (err) {
-                // node couldn't execute the command
-                console.log(err);
-                return;
-            }
-            console.log(dirs[i]);
-            // the *entire* stdout and stderr (buffered)
-            // console.log(`stdout: ${stdout}`);
-            // console.log(`stderr: ${stderr}`);
-            _chmod(dirs, i + 1);
-        });
-    }
-
-    _chmod(Config.publicFolders)
-})
 
 gulp.task('zip', () => {
 

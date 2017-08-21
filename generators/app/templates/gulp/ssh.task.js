@@ -43,6 +43,15 @@ gulp.task('ssh:mkdir', () => {
 
 });
 
+gulp.task('ssh:chmod', () => {
+
+    let commands = Config.publicFolders.map((folder) => {
+        return `chmod -R 755 ${Config.remoteDirectory}${folder}`
+    })
+    
+    return shell(commands);
+})
+
 gulp.task('ssh:require-functions', () => {
     return shell([
         `file=\`cat ${Config.themeBase}functions.php\``,
