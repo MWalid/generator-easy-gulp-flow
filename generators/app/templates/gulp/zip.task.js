@@ -22,14 +22,11 @@ gulp.task('zip', () => {
         '!js-future{,/**}',
         '.htaccess',
         '*.php',
-        '!config/database.php',
         '!vendor/bin{,/**}',
     ];
 
-    if (argv.withConfig) {
-        src = src.filter(src => src != '!config/database.php');
-    }
-
-    return gulp.src(src).pipe(zip(path.basename(Config.localCompressed)))
+    return gulp.src(src, {
+        base: './'
+    }).pipe(zip(path.basename(Config.localCompressed)))
     .pipe(gulp.dest('./compressed/'));
 });
